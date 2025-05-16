@@ -1,0 +1,11 @@
+<h1>Coucou !</h1>
+
+<p-button (click)="toast()">Petit toast !</p-button>
+
+La liste des personnes :
+
+<ul>
+  @for (person of persons; track person.id) {
+    <li>{{ person | json }}</li>
+  }
+</ul>

@@ -1,0 +1,6 @@
+{
+  "domain": "localhost",
+  "serverAddress": "localhost",
+  "apiURL": "http://localhost:8080/api",
+  "tokenTTL": 36000000
+}
