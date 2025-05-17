@@ -12,7 +12,7 @@ export class PersonService {
 
   constructor(private httpClient: HttpClient,
               protected configurationService: ConfigurationService) {
-    this.apiUrl = configurationService.getApiUrl();
+    this.apiUrl = `${configurationService.getApiUrl()}/persons`;
   }
 
   listPersons(): Observable<Person[]> {

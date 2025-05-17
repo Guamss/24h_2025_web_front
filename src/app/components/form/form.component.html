@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="username">Nom d'utilisateur</label>
+  <input pInputText formControlName="username" type="text" name="username">
+    @if (form.get('username')?.invalid && form.value.username !== '') {
+      <span class="error">Nom d'utilisateur invalide</span>
+    }
+  <label for="password">Mot de passe</label>
+  <input pInputText formControlName="password" type="password" name="password">
+  @if (form.get('password')?.invalid && form.value.password !== '') {
+    <span class="error">Mot de passe invalide</span>
+  }
+  <!-- Désactive le bouton si le formulaire n'est pas valide -->
+  <p-button type="submit" [disabled]="form.invalid">
+    Login
+  </p-button>
+</form>
