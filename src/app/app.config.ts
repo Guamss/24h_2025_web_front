@@ -8,6 +8,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {myPreset} from './preset';
 import {MessageService} from 'primeng/api';
 
+
+// Config basique, mypreset est un preset de style provenant de primeng
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from '../model/person';
-import {PersonService} from '../services/person.service';
+import {Person} from '../../model/person';
+import {PersonService} from '../../services/person.service';
 import {JsonPipe} from '@angular/common';
 import {MessageService} from 'primeng/api';
 import {Button} from 'primeng/button';
@@ -23,12 +23,17 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // On s'abonne à un observable, ça a pour conséquence de "l'activer".
+    // Concrètement ça envoit une requête HTTP à l'API sur l'adresse 'http://localhost:8080/api/persons/'
     this.personService.listPersons().subscribe({
+      // Exécuté si la requête réussi
       next: (retrievePersons: Person[]) => {
         this.persons = retrievePersons;
       },
+      // Si ça foire
       error: (error) => {
-        console.error(`Une erreur est survenue : ${error}`);
+        console.error(`Une erreur est survenue : ${error.error.message}`);
       }
     })
   }
