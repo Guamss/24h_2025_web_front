@@ -1,0 +1,19 @@
+<h1>juste-question: Trouve la bonne date !</h1>
+@if (!launched) {
+  <p>oui + desc du jeu</p>
+  <p-button label="Lancer le jeu" [raised]="true" severity="success" (click)="launch()"/>
+
+} @else if (!finished) {
+  <p>jeu</p>
+
+  <p>{{questions[currentquestion].text}}</p>
+  <input type="text" pInputText [(ngModel)]="inputedvalue" class="w-full mb-4" min="1800" max="2020"/>
+  <p-slider [(ngModel)]="inputedvalue" class="w-full" min="1800" max="2020" />
+
+  <button class="btn primary mt-3" (click)="answering()" [disabled]="!inputedvalue">Valider</button>
+
+} @else {
+  <p>fin</p>
+  <p>Voici votre score :</p>
+  <p>{{score}}</p>
+}

@@ -1,1 +1,28 @@
 @import '../node_modules/primeicons/primeicons.css';
+
+:root {
+  --p-theme-mode: light !important;
+}
+
+/* Override le système */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light !important;
+    --p-theme-mode: light !important;
+  }
+}
+
+.p-menubar {
+  background-color: white !important;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.p-menubar-root-list > .p-menubar-item > .p-menubar-item-content > .p-menubar-item-link {
+  color: black !important;
+}
+
+.p-menubar .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content > .p-menubar-item-link:hover {
+  background-color: #eaeaea !important; /* fond hover clair */
+  color: black !important; /* texte toujours bien visible */
+}

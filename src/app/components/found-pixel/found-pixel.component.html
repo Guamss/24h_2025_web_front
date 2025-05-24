@@ -1,0 +1,28 @@
+<h1>Found pixel !</h1>
+
+@if (!launched){
+  <h2>Accroche phrase pour accrocher à la page du jeu</h2>
+
+  <p>Explic tion du jeu sur la page du jeu pour comprendre le jeu en l'expliquant bien comme il faut avec des explications</p>
+
+  <p-button label="Lancer le jeu" [raised]="true" severity="success" (click)="launch()"/>
+} @else if (!finished){
+
+  <p>début du jeu</p>
+
+  <div class="flex flex-wrap gap-4">
+    <img src="{{questions[currentQuestionIndex].image}}"  alt="alt text"/>
+    <p>Question : {{questions[currentQuestionIndex].text}}</p>
+
+    @for (option of questions[currentQuestionIndex].options; track option) {
+      <p-button [label]="option" severity="secondary" (click)="anwser(option)"/>
+    }
+  </div>
+
+} @else {
+  <p>Fin du found pixel, voici votre score : </p>
+  <p>{{ score }}</p>
+}
+
+
+

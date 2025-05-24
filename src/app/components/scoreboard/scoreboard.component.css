@@ -1,0 +1,41 @@
+.scoreboard-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9fafb;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.scoreboard-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #4f46e5; /* indigo */
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+
+.score-table th, .score-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.score-table th {
+  background-color: #eef2ff;
+  color: #4338ca;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.score-table tr:nth-child(even) {
+  background-color: #f3f4f6;
+}
+
+.score-table tr:hover {
+  background-color: #e0e7ff;
+}

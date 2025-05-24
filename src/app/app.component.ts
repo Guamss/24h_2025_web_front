@@ -22,20 +22,28 @@ export class AppComponent implements OnInit {
         routerLink: '/'
       },
       {
-        label: 'Menu déroulant',
-        icon: 'pi pi-search',
-        items: [
-          {
-            label: 'Formulaire',
-            icon: 'pi pi-pencil',
-            routerLink: '/form'
-          },
-          {
-            label: 'Not found',
-            icon: 'pi pi-times',
-            routerLink: '/jemetnimportequoidanslurldemonnavigateur'
-          }
-        ]
+        label: 'QCM de culture !',
+        icon: 'pi pi-pencil',
+        routerLink: '/qcm'
+      },
+      {
+        label: 'Devine la date !',
+        icon: 'pi pi-calendar',
+        routerLink: '/date-guess'
+      },
+      {
+        label: 'Qui est-ce ?',
+        icon: 'pi pi-question',
+        routerLink: '/found-pixel'
+      },
+      {
+        label: 'Vrais ou faux?',
+        routerLink: '/is-lyonnais'
+      },
+      {
+        label: 'Devine la musique!',
+        icon: 'pi pi-pencil',
+        routerLink: '/guess-music'
       }
     ]
   }

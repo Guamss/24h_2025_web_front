@@ -1,11 +1,17 @@
-<h1>Coucou !</h1>
+<div class="home-container">
+  <h1 class="main-title">✨ Lumières sur Lyon ✨</h1>
 
-<p-button (click)="toast()">Petit toast !</p-button>
+  <button class="btn" (click)="toast()">Petit toast !</button>
 
-La liste des personnes :
+  <p class="intro">
+    Bienvenue sur ce site web illuminé par la culture, le cinéma et la ville lumière !
+  </p>
 
-<ul>
-  @for (person of persons; track person.id) {
-    <li>{{ person | json }}</li>
-  }
-</ul>
+  <h2 class="section-title">📝 Description du site :</h2>
+  <p class="description">
+    Ce site vous propose un petit quiz pour tester vos connaissances sur le thème des "lumières" :
+    de la Fête des Lumières à Lyon, en passant par les frères Lumière et les symboles de savoir et d’innovation.
+  </p>
+
+  <button class="btn primary" routerLink="qcm">🔥 Vers le QUIZ</button>
+</div>

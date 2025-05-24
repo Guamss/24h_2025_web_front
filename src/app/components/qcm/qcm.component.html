@@ -1,0 +1,51 @@
+@if (!started) {
+  <div class="quiz-welcome-card">
+    <h1>Connais-tu vraiment bien les lumières?</h1>
+    <div class="welcome-container">
+      <h2 class="title">Ce QCM de 10 questions porte sur les lumières ? 💡</h2>
+      <p class="subtitle">Clique sur le bouton ci-dessous pour commencer le quiz.</p>
+      <button class="btn primary" (click)="started = true">Commencer</button>
+    </div>
+  </div>
+
+} @else if (!finished && started) {
+  <div [title]="questions[currentQuestionIndex].text">
+    <h1>{{ 'Question ' + (currentQuestionIndex + 1) + ' / ' + questions.length }}</h1>
+    <h2>{{ questions[currentQuestionIndex].text }}</h2>
+
+    @for (option of questions[currentQuestionIndex].options; track option) {
+      <div class="flex align-items-center gap-2 my-2">
+        <p-radiobutton
+          name="option"
+          [value]="option"
+          [(ngModel)]="guess"
+          [inputId]="option">
+        </p-radiobutton>
+        <label [for]="option">{{ option }}</label>
+      </div>
+    }
+
+    <button class="btn primary mt-3" (click)="validateGuess()" [disabled]="!guess">Valider</button>  </div>
+} @else {
+  <div class="result-container">
+    <h1>Résultat 🎉</h1>
+
+    <div class="score-message">
+      <span *ngIf="score < 0.5 * questions.length">Pas très brillant</span>
+      <span *ngIf="score === questions.length">Woaw, un sans faute ! T'es vraiment une lumière</span>
+      <span *ngIf="score >= 0.5 * questions.length && score < questions.length">Pas mal ! Mais y'a moyen de briller plus !</span>
+    </div>
+
+    <div class="score-form">
+      <label for="username">Votre nom</label>
+      <input id="username" name="username" [(ngModel)]="username" placeholder="ex: Alexis" />
+
+      <button class="btn success" (click)="saveScore()">💾 Enregistrer mon score</button>
+    </div>
+
+    <p class="final-score">Score : {{ score }} / {{ questions.length }}</p>
+
+    <button class="btn warning" (click)="restart()">🔁 Recommencer</button>
+  </div>
+
+}

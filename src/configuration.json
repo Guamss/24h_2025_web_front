@@ -1,6 +1,6 @@
 {
-  "domain": "localhost",
-  "serverAddress": "localhost",
-  "apiURL": "http://localhost:8000",
+  "domain": "10.17.40.40",
+  "serverAddress": "10.17.40.40",
+  "apiURL": "http://10.17.40.40:8000",
   "tokenTTL": 36000000
 }
