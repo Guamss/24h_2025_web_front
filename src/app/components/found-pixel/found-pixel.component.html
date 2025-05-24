@@ -1,28 +1,31 @@
 <h1>Found pixel !</h1>
 
 @if (!launched){
-  <h2>Accroche phrase pour accrocher à la page du jeu</h2>
+  <h2>Devine quelle célébrité lyonnaise se cache derrière la photo floue</h2>
 
-  <p>Explic tion du jeu sur la page du jeu pour comprendre le jeu en l'expliquant bien comme il faut avec des explications</p>
+  <p>Une image floutée vous sera montré. Sur celle-ci se trouve un célébrité lyonnaise. A vous de la retrouver !</p>
 
   <p-button label="Lancer le jeu" [raised]="true" severity="success" (click)="launch()"/>
-} @else if (!finished){
+} @else {
 
   <p>début du jeu</p>
 
   <div class="flex flex-wrap gap-4">
-    <img src="{{questions[currentQuestionIndex].image}}"  alt="alt text"/>
-    <p>Question : {{questions[currentQuestionIndex].text}}</p>
+    @if (!responded){
+      <img src="{{questions[currentQuestionIndex].imagepxl}}"  alt="alt text" width="30%"/>
+      <p>{{questions[currentQuestionIndex].text}}</p>
 
-    @for (option of questions[currentQuestionIndex].options; track option) {
-      <p-button [label]="option" severity="secondary" (click)="anwser(option)"/>
+      @for (option of questions[currentQuestionIndex].options; track option) {
+        <p-button [label]="option" severity="secondary" (click)="anwser(option)"/>
+      }
+    } @else {
+      <img src="{{questions[currentQuestionIndex].image}}"  alt="alt text" width="30%"/>
+      @if (win){
+        <p>C'est gagné !</p>
+      } @else {
+        <p>C'est perdu !</p>
+        <p>Il s'agissait de {{questions[currentQuestionIndex].options[questions[currentQuestionIndex].answer]}}</p>
+      }
     }
   </div>
-
-} @else {
-  <p>Fin du found pixel, voici votre score : </p>
-  <p>{{ score }}</p>
 }
-
-
-

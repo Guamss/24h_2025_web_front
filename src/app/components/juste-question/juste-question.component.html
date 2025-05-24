@@ -1,19 +1,33 @@
-<h1>juste-question: Trouve la bonne date !</h1>
-@if (!launched) {
-  <p>oui + desc du jeu</p>
-  <p-button label="Lancer le jeu" [raised]="true" severity="success" (click)="launch()"/>
+<div class="juste-question-container">
 
-} @else if (!finished) {
-  <p>jeu</p>
+  <div [class.hidden]="launched" class="intro-screen">
+    <h1>Juste Date : Trouve la bonne date !</h1>
+    <p>Devine l'année de naissance des personalités et célébrités lyonnaises !</p>
+    <p>Si vous trouvez l'année juste, vous gagnez 20 points. 1 point est retiré à ces 20 points pour chaque année de différence avec la bonne réponse.</p>
+    <button class="btn success" (click)="launch()">Lancer le jeu</button>
+  </div>
 
-  <p>{{questions[currentquestion].text}}</p>
-  <input type="text" pInputText [(ngModel)]="inputedvalue" class="w-full mb-4" min="1800" max="2020"/>
-  <p-slider [(ngModel)]="inputedvalue" class="w-full" min="1800" max="2020" />
+  <div [class.hidden]="!launched || finished" class="question-screen">
+    <h2>📅 En quelle année est né...</h2>
+    <div class="question-div">
+      <p class="nom-text">{{ questions[currentquestion]?.nom }}</p>
+      <img src="{{questions[currentquestion]?.image}}" alt="alt text" width="20%"/>
+    </div>
+    <p class="question-text">{{ questions[currentquestion]?.text }}</p>
 
-  <button class="btn primary mt-3" (click)="answering()" [disabled]="!inputedvalue">Valider</button>
+    <input type="number" [(ngModel)]="inputedvalue" class="input-year" min="1800" max="2020"/>
+    <p-slider [(ngModel)]="inputedvalue" class="slider" [min]="1800" [max]="2020"></p-slider>
 
-} @else {
-  <p>fin</p>
-  <p>Voici votre score :</p>
-  <p>{{score}}</p>
-}
+    <button class="btn primary mt-3" (click)="answering()" [disabled]="!inputedvalue">Valider</button>
+  </div>
+
+  <div [class.hidden]="!finished" class="result-screen">
+    <h2>🏁 Fin du jeu !</h2>
+    <p>Votre score final est de : <strong>{{ score }}</strong></p>
+    @for (question of questions; track question){
+      <p><b>{{question.nom}}</b> est né en {{question.answer}}</p>
+    }
+    <button class="btn warning" (click)="restart()">Rejouer</button>
+  </div>
+
+</div>

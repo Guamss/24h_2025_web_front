@@ -4,7 +4,6 @@
   --p-theme-mode: light !important;
 }
 
-/* Override le système */
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: light !important;
@@ -13,23 +12,65 @@
 }
 
 .p-menubar {
-  background-color: white !important;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #fff !important;
+  border-bottom: 1px solid #ddd;
+  color: #333 !important;
 }
 
-.p-menubar-root-list > .p-menubar-item > .p-menubar-item-content > .p-menubar-item-link {
-  color: black !important;
+.p-menubar::before {
+  box-shadow: none !important;
 }
 
-.p-menubar .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content > .p-menubar-item-link:hover {
-  background-color: #eaeaea !important; /* fond hover clair */
-  color: black !important; /* texte toujours bien visible */
+.p-menubar-root-list {
+  background-color: #fff !important;
 }
 
-.p-menubar-item.p-highlight > .p-menuitem-link,
-.p-menubar-item.p-menuitem-active > .p-menuitem-link,
-.p-menubar-item-link.p-highlight {
-  background-color: #eaeaea !important;
+.p-menubar-item-link {
+  background-color: transparent !important;
+  color: #333 !important;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  border-radius: 4px;
+}
+
+.p-menubar-item-link:hover {
+  background-color: #f0f0f0 !important;
+  color: #111 !important;
+}
+
+.p-menubar-item.p-highlight > .p-menubar-item-link,
+.p-menubar-item-link.p-highlight,
+.p-menubar-item-link:focus,
+.p-menuitem-active > .p-menubar-item-link {
+  background-color: #e0e0e0 !important;
+  color: #000 !important;
+}
+
+.p-submenu-list {
+  background-color: #fff !important;
+  border: 1px solid #ddd;
+}
+
+.p-submenu-list .p-menuitem-link {
+  color: #333 !important;
+}
+
+.p-submenu-list .p-menuitem-link:hover {
+  background-color: #f0f0f0 !important;
+  color: #000 !important;
+}
+
+.p-menubar .p-menubar-item-link:focus,
+.p-menubar .p-menubar-item-link:active,
+.p-menubar .p-menuitem-link:focus,
+.p-menubar .p-menuitem-link:active {
+  background-color: #fff !important;
+  color: #333 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.p-menubar .p-menubar-item.p-highlight > .p-menubar-item-link {
+  background-color: #f0f0f0 !important;
   color: #000 !important;
 }
