@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-template": {
+    "Quadruplets-24h": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-template",
+            "outputPath": "dist/Quadruplets-24h",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-template:build:production"
+              "buildTarget": "Quadruplets-24h:build:production"
             },
             "development": {
-              "buildTarget": "angular-template:build:development"
+              "buildTarget": "Quadruplets-24h:build:development"
             }
           },
           "defaultConfiguration": "development"

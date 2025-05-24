@@ -1,1 +1,20 @@
-<p>is-lyonnais works!</p>
+<div class="card">
+  <h1>Cette célébrité est-elle lyonnaise ?</h1>
+
+  <div class="image-container">
+    <img [src]="'assets/is-lyonnais/' + currentImage" [alt]="currentName" />
+    <h2>{{ currentName }}</h2>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn" [disabled]="hasAnswered" (click)="submitAnswer(true)">Lyonnais</button>
+    <button class="btn" [disabled]="hasAnswered" (click)="submitAnswer(false)">Pas lyonnais</button>
+  </div>
+
+  <div class="feedback" [class.visible]="hasAnswered">
+    <p [class.correct]="isCorrect" [class.incorrect]="!isCorrect">
+      {{ feedbackMessage }}
+    </p>
+    <button class="btn retry" (click)="restart()">Recommencer</button>
+  </div>
+</div>

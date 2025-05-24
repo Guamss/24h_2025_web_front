@@ -1,0 +1,56 @@
+.card {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: #1976d2;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.retry {
+  margin-top: 1rem;
+  background-color: #ffa000;
+}
+
+.feedback {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.feedback.visible {
+  opacity: 1;
+  height: auto;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}

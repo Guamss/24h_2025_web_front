@@ -26,3 +26,10 @@
   background-color: #eaeaea !important; /* fond hover clair */
   color: black !important; /* texte toujours bien visible */
 }
+
+.p-menubar-item.p-highlight > .p-menuitem-link,
+.p-menubar-item.p-menuitem-active > .p-menuitem-link,
+.p-menubar-item-link.p-highlight {
+  background-color: #eaeaea !important;
+  color: #000 !important;
+}

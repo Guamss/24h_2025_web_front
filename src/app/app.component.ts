@@ -41,9 +41,9 @@ export class AppComponent implements OnInit {
         routerLink: '/is-lyonnais'
       },
       {
-        label: 'Devine la musique!',
-        icon: 'pi pi-pencil',
-        routerLink: '/guess-music'
+        label: 'Classement',
+        icon: 'pi pi-list',
+        routerLink: '/scoreboard'
       }
     ]
   }

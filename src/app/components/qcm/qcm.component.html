@@ -10,6 +10,19 @@
 
 } @else if (!finished && started) {
   <div [title]="questions[currentQuestionIndex].text">
+
+    <!-- Player audio -->
+    <audio #audioPlayer src="assets/qcm_music.mp3" autoplay loop></audio>
+    <!-- Contrôles audio -->
+    <div class="audio-controls">
+      <button class="btn" (click)="toggleMute()">
+        {{ isMuted ? '🔈 Unmute' : '🔇 Mute' }}
+      </button>
+      <label for="volumeRange">Volume :</label>
+      <input id="volumeRange" type="range" min="0" max="1" step="0.05"
+             [(ngModel)]="volume" (input)="changeVolume()">
+    </div>
+
     <h1>{{ 'Question ' + (currentQuestionIndex + 1) + ' / ' + questions.length }}</h1>
     <h2>{{ questions[currentQuestionIndex].text }}</h2>
 
@@ -25,15 +38,20 @@
       </div>
     }
 
-    <button class="btn primary mt-3" (click)="validateGuess()" [disabled]="!guess">Valider</button>  </div>
+    <button class="btn primary mt-3" (click)="validateGuess()" [disabled]="!guess">Valider</button>
+  </div>
 } @else {
   <div class="result-container">
     <h1>Résultat 🎉</h1>
 
     <div class="score-message">
-      <span *ngIf="score < 0.5 * questions.length">Pas très brillant</span>
-      <span *ngIf="score === questions.length">Woaw, un sans faute ! T'es vraiment une lumière</span>
-      <span *ngIf="score >= 0.5 * questions.length && score < questions.length">Pas mal ! Mais y'a moyen de briller plus !</span>
+      @if (score < 0.5 * questions.length) {
+        <span>Pas très brillant</span>
+      } @else if (score === questions.length) {
+        <span>Woaw, un sans faute ! T'es vraiment une lumière</span>
+      } @else {
+        <span>Pas mal ! Mais y'a moyen de briller plus !</span>
+      }
     </div>
 
     <div class="score-form">
@@ -47,5 +65,4 @@
 
     <button class="btn warning" (click)="restart()">🔁 Recommencer</button>
   </div>
-
 }

@@ -1,29 +1,21 @@
-import { Component } from '@angular/core';
-import {Card} from 'primeng/card';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {RadioButton} from 'primeng/radiobutton';
-import {Button, ButtonDirective} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
 import {Question} from '../../model/question';
 import {ScoreService} from '../../service/score.service';
-import {Score} from '../../model/score';
-import {InputText} from 'primeng/inputtext';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-qcm',
   standalone: true,
   imports: [
-    Card
     RadioButton,
-    ButtonDirective,
-    FormsModule,
-    Button,
-    InputText
+    FormsModule
   ],
   templateUrl: './qcm.component.html',
-  styleUrl: './qcm.component.css'
+  styleUrls: ['./qcm.component.css']
 })
-export class QcmComponent {
+export class QcmComponent implements AfterViewInit {
   username: string = '';
   started: boolean = false;
   guess: string = '';
@@ -94,8 +86,20 @@ export class QcmComponent {
   score = 0;
   finished = false;
 
+  // Pour l'audio
+  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
+  isMuted: boolean = false;
+  volume: number = 0.5;
+
   constructor(private scoreService: ScoreService,
               private router: Router) {
+  }
+
+  ngAfterViewInit() {
+    if (this.audioPlayer) {
+      this.audioPlayer.nativeElement.volume = this.volume;
+      this.audioPlayer.nativeElement.muted = this.isMuted;
+    }
   }
 
   validateGuess() {
@@ -119,7 +123,7 @@ export class QcmComponent {
         error: (err) => {
           console.error(err);
         }
-      })
+      });
     }
   }
 
@@ -130,4 +134,23 @@ export class QcmComponent {
     this.finished = false;
   }
 
+  toggleMute() {
+    this.isMuted = !this.isMuted;
+    if (this.audioPlayer) {
+      this.audioPlayer.nativeElement.muted = this.isMuted;
+    }
+  }
+
+  changeVolume() {
+    if (this.audioPlayer) {
+      this.audioPlayer.nativeElement.volume = this.volume;
+      if (this.volume === 0) {
+        this.isMuted = true;
+        this.audioPlayer.nativeElement.muted = true;
+      } else if (this.isMuted) {
+        this.isMuted = false;
+        this.audioPlayer.nativeElement.muted = false;
+      }
+    }
+  }
 }

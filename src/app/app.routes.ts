@@ -6,8 +6,6 @@ import {JusteQuestionComponent} from './components/juste-question/juste-question
 import {FoundPixelComponent} from './components/found-pixel/found-pixel.component';
 import {ScoreboardComponent} from './components/scoreboard/scoreboard.component';
 import {IsLyonnaisComponent} from './components/is-lyonnais/is-lyonnais.component';
-import {GuessMusicComponent} from './components/guess-music/guess-music.component';
-
 export const routes: Routes = [
   {path: '', component: HomeComponent/*, canActivate: [simpleGuardGuard]*/},
   {path: 'qcm', component: QcmComponent},
@@ -15,6 +13,5 @@ export const routes: Routes = [
   {path: 'found-pixel', component: FoundPixelComponent},
   {path: 'scoreboard', component: ScoreboardComponent},
   {path: 'is-lyonnais', component: IsLyonnaisComponent},
-  {path: 'guess-music', component: GuessMusicComponent},
   {path: '**', component: NotFoundComponent}
 ];
